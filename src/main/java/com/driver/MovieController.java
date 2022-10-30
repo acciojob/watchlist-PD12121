@@ -91,4 +91,10 @@ public class MovieController {
 
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @GetMapping("/get-movies-by-director-name/{director}")
+    public ResponseEntity getMoviesByDirectorName(@PathVariable("directorName")String directorName){
+        List<Movie>moviesByDirector = movieService.getDirectorMovie(directorName);
+        return new ResponseEntity(moviesByDirector,HttpStatus.OK);
+    }
 }

@@ -65,4 +65,13 @@ public class MovieRepository {
         }
         directors.clear();
     }
+
+    public List<Movie> getMovies(String directorName) {
+        List<Movie>movieList = new ArrayList<>();
+        if(movies.containsKey(directorName)){
+            movieList.add(movies.get(directorName));
+        }
+
+        return movieList;
+    }
 }
