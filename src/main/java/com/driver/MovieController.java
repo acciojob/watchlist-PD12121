@@ -86,4 +86,9 @@ public class MovieController {
         return new ResponseEntity("Sucess",HttpStatus.OK);
     }
 
+    @PutMapping("/add-movie-director-pair")
+    public ResponseEntity addMovieDirectorPair(@RequestParam("movieName")String movieName,@RequestParam("directorName")String directorName){
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
