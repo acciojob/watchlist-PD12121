@@ -27,7 +27,7 @@ public class MovieController {
 
     //running successfully
     @PostMapping("/add-movie")
-    ResponseEntity<String>addMovie(@RequestBody(required = true)Movie movie){
+    public ResponseEntity<String>addMovie(@RequestBody(required = true)Movie movie){
        // movies.put(movie.getName(), movie);
         movieService.addMovie(movie);
         return new ResponseEntity<>("sucess", HttpStatus.CREATED);
@@ -35,7 +35,7 @@ public class MovieController {
 
     //running
     @PostMapping("/add-director")
-    ResponseEntity<String>addDirector(@RequestBody()Director director){
+    public ResponseEntity<String>addDirector(@RequestBody()Director director){
 
         movieService.addDirector(director);
 
