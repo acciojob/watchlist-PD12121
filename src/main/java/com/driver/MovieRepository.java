@@ -35,21 +35,13 @@ public class MovieRepository {
 
     public Movie getMovie(String name) {
 
-        for(Movie m : movies.values()){
-            if(m.getName() == name){
-                return m;
-            }
-        }
-        return null;
+        Movie m = movies.get(name);
+        return m;
     }
 
     public Director getDirector(String directorname) {
-        for(Director d : directors.values()){
-            if(d.getName() == directorname){
-                return d;
-            }
-        }
-        return null;
+        Director d = directors.get(directorname);
+        return d;
     }
 
     public void DeleteDirector(String name) {

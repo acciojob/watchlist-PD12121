@@ -54,32 +54,32 @@ public class MovieController {
 
     // running but output is not there
     @GetMapping("/get-movie-by-name/{name}")
-    public ResponseEntity getMovieByName(@PathParam("name")String name){
+    public ResponseEntity<Movie> getMovieByName(@PathVariable("name")String name){
 
-        try {
+        //try {
             Movie movie = movieService.getMovie(name);
             return new ResponseEntity<>(movie,HttpStatus.OK);
-        }catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_GATEWAY);
-        }
+       // }catch (Exception e) {
+            //return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_GATEWAY);
+        //}
 
     }
 
     @GetMapping("/get-director-by-name/{name}")
-    public ResponseEntity getDirectorByName(@PathParam("director")String directorname){
-       try {
+    public ResponseEntity<Director> getDirectorByName(@PathParam("director")String directorname){
+       //try {
            Director d = movieService.getDirector(directorname);
            return new ResponseEntity<>(d,HttpStatus.OK);
-       }catch (Exception e){
-           return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_GATEWAY);
-       }
+       //}catch (Exception e){
+       //    return new ResponseEntity<>(null,HttpStatus.BAD_GATEWAY);
+       //}
 
     }
 
     @DeleteMapping("/delete-director-by-name")
-    public ResponseEntity deleteDirectorByName(@PathVariable("directorName")String name){
+    public ResponseEntity deleteDirectorByName(@PathParam("directorName")String name){
         movieService.deleteDirector(name);
-        return new ResponseEntity<>("Sucess",HttpStatus.CREATED);
+        return new ResponseEntity<>("Sucess",HttpStatus.OK );
     }
 
     @DeleteMapping("/delete-all-directors")
