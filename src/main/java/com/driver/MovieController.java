@@ -56,21 +56,23 @@ public class MovieController {
     @GetMapping("/get-movie-by-name/{name}")
     public ResponseEntity getMovieByName(@PathParam("name")String name){
 
-        Movie movie = movieRepository.getMovie(name);
-        if(movie !=null){
-            return new ResponseEntity(movie, HttpStatus.OK);
+        try {
+            Movie movie = movieService.getMovie(name);
+            return new ResponseEntity<>(movie,HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_GATEWAY);
         }
-        return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
     }
 
     @GetMapping("/get-director-by-name/{name}")
     public ResponseEntity getDirectorByName(@PathParam("director")String directorname){
-        Director director = movieRepository.getDirector(directorname);
-        if(director != null){
-            return new ResponseEntity(director, HttpStatus.OK);
-        }
-        return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+       try {
+           Director d = movieService.getDirector(directorname);
+           return new ResponseEntity<>(d,HttpStatus.OK);
+       }catch (Exception e){
+           return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_GATEWAY);
+       }
 
     }
 
