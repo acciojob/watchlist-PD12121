@@ -49,17 +49,17 @@ public class MovieRepository {
 
     public void deleteMovieByName(String s) {
             int idx = movieList.indexOf(s);
-            if(idx >= 0){
+            //if(idx >= 0){
                 movieList.remove(idx);
-            }
+           // }
 
     }
 
     public void deleteDirectorByName(String name) {
             int idx = directorList.indexOf(name);
-            if(idx >=0){
+            //if(idx >=0){
                 directorList.remove(idx);
-            }
+           // }
 
     }
 
